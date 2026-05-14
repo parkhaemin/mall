@@ -46,7 +46,7 @@ function Hero() {
 
 // 🔥 상품 리스트
 function ProductList({setModalImg}) {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   
   return (
     <section style={{ maxWidth: "1200px", margin: "20px auto", padding: "0 20px" }}>
