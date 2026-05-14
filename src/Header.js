@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   FaBars,
@@ -23,24 +24,29 @@ export default function Header({ isTop }) {
         zIndex: 9999,
       }}
     >
-      {/* TOP HEADER */}
+      {/* HEADER */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
           padding: "12px 20px",
-          position: "relative",
         }}
       >
         {/* LEFT */}
         <FaBars
           style={{ fontSize: 20, cursor: "pointer" }}
-          onClick={() => setMenuOpen((v) => !v)}
+          onClick={() => setMenuOpen(true)}
         />
 
-        {/* CENTER LOGO */}
-        <div style={{ fontWeight: "bold", letterSpacing: "6px" }}>
+        {/* LOGO */}
+        <div
+          style={{
+            fontWeight: "bold",
+            letterSpacing: "6px",
+            textAlign: "center",
+          }}
+        >
           BLEN
         </div>
 
@@ -59,9 +65,7 @@ export default function Header({ isTop }) {
         </div>
       </div>
 
-      {/* =========================
-          🔥 SCROLL DOWN 상태
-      ========================= */}
+      {/* SCROLL MENU */}
       {!isTop && (
         <div
           style={{
@@ -87,62 +91,72 @@ export default function Header({ isTop }) {
         </div>
       )}
 
-      {/* =========================
-          🔥 SCROLL TOP (ZARA FULL SCREEN)
-      ========================= */}
-      {menuOpen && isTop && (
+      {/* SIDE MENU */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: menuOpen ? 0 : "-260px",
+          width: "260px",
+          height: "100vh",
+          background: "#fff",
+          zIndex: 3000,
+          transition: "0.3s ease",
+          boxShadow: "2px 0 10px rgba(0,0,0,0.08)",
+          padding: "80px 30px",
+        }}
+      >
+        {/* CLOSE */}
         <div
+          onClick={() => setMenuOpen(false)}
+          style={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            fontSize: "22px",
+            cursor: "pointer",
+          }}
+        >
+          ✕
+        </div>
+
+        {/* MENU LIST */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "28px",
+          }}
+        >
+          {menuItems.map((item) => (
+            <div
+              key={item}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                fontSize: "15px",
+                letterSpacing: "2px",
+                cursor: "pointer",
+              }}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* BACKDROP */}
+      {menuOpen && (
+        <div
+          onClick={() => setMenuOpen(false)}
           style={{
             position: "fixed",
             inset: 0,
-            background: "rgba(0,0,0,0.9)",
+            background: "rgba(0,0,0,0.3)",
             zIndex: 2000,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "white",
-            opacity: menuOpen ? 1 : 0,
-            pointerEvents: menuOpen ? "auto" : "none",
-
-           transform: menuOpen ? "scale(1)" : "scale(1.05)",
-           transition: "0.25s ease",
           }}
-        >
-          {/* MENU */}
-          <div
-            style={{
-              display: "flex",
-              gap: "40px",
-              fontSize: "18px",
-              letterSpacing: "3px",
-            }}
-          >
-            {menuItems.map((item) => (
-              <div
-                key={item}
-                onClick={() => setMenuOpen(false)}
-                style={{ cursor: "pointer" }}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-
-          {/* CLOSE */}
-          <div
-            onClick={() => setMenuOpen(false)}
-            style={{
-              position: "absolute",
-              top: "20px",
-              right: "24px",
-              fontSize: "26px",
-              cursor: "pointer",
-            }}
-          >
-            ✕
-          </div>
-        </div>
+        />
       )}
     </header>
   );
 }
+

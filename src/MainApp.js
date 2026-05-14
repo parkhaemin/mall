@@ -1,19 +1,6 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from "react-router-dom";
-import ProductDetail from "./ProductDetail";
-import Layout from "./Layout"
-import { useState, useEffect } from "react";
-import {
-  FaBars,
-  FaTwitter,
-  FaInstagram,
-  FaFacebookF,
-  FaTiktok,
-  FaSearch,
-  FaHeart,
-  FaUser,
-  FaShoppingBag
-} from "react-icons/fa";
 
 // 이미지
 const IMG_MAIN1 = "/blen-main1.jpg";
@@ -59,7 +46,7 @@ function Hero() {
 
 // 🔥 상품 리스트
 function ProductList({setModalImg}) {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   
   return (
     <section style={{ maxWidth: "1200px", margin: "20px auto", padding: "0 20px" }}>
@@ -68,7 +55,7 @@ function ProductList({setModalImg}) {
         {products.map((p) => (
           <div key={p.id} onClick={() => navigate(`/product/${p.id}`)}>
            
-            <img src={p.img} 
+            <img src={p.img}  alt=""
             style={{ width: "200px", cursor: "pointer" }} 
             
            />
@@ -156,7 +143,7 @@ export default function MainApp() {
         background: "#fff",
         padding: "10px"
       }}
-    />
+    alt="" />
   </div>
   )}
 

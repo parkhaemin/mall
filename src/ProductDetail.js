@@ -25,7 +25,7 @@ export default function ProductDetail() {
 
       {/* 이미지 */}
       <div className="product-image">
-        <img src={product.img} alt={product.name} />
+        <img src={product.img} alt={product.name} alt="" />
       </div>
 
       {/* 정보 */}
