@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const products = [
-  { id: 1, name: "BLEN Black Front", price: 39000, img: "/blen-main1.jpg" },
-  { id: 2, name: "BLEN White Logo", price: 49000, img: "/blen-main2.jpg" },
-  { id: 3, name: "BLEN Back Mood", price: 42000, img: "/blen-main3.jpg" },
-  { id: 4, name: "BLEN Basic", price: 39000, img: "/blen-main4.jpg" }
+  { id: 1, name: "BLEN Black Front", price: 39000, img: process.env.PUBLIC_URL + "/blen-main1.jpg" },
+  { id: 2, name: "BLEN White Logo", price: 49000, img: process.env.PUBLIC_URL + "/blen-main2.jpg" },
+  { id: 3, name: "BLEN Back Mood", price: 42000, img: process.env.PUBLIC_URL + "/blen-main3.jpg" },
+  { id: 4, name: "BLEN Basic", price: 39000, img: process.env.PUBLIC_URL + "/blen-main4.jpg" }
 ];
+
 
 export default function ProductDetail() {
   const { id } = useParams();
