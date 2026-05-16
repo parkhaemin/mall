@@ -65,7 +65,7 @@ export default function Footer() {
         <div style={{ lineHeight: "1.8" }}>
          
             
-            <p>© jjAprl | 대표자 : 김민호 | 주소 : 서울특별시 금천구 가산동 스타벨리 10층 | 연락처 : 010-8686-7274 |
+            <p>© jjAprl | 대표자 : 김민호 | 주소 : 서울특별시 금천구 가산동 스타밸리 10층 | 연락처 : 010-8686-7274 |
                       사업자 등록 번호 : 511-19-09634</p>
             <div style={{
               marginTop: "10px", display: "flex", justifyContent: "space-between", alignItems: "center"
